@@ -1,48 +1,83 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import './globals.css'
 
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
-  icons: {
-    icon: [
+  title: {
+    default: 'Velour & Co. — Luxury Boutique Hotel',
+    template: '%s | Velour & Co.',
+  },
+  description:
+    'Experience unrivalled luxury at Velour & Co. — an intimate boutique hotel where every detail has been curated for the discerning traveller.',
+  keywords: [
+    'luxury hotel',
+    'boutique resort',
+    'premium accommodation',
+    'Velour hotel',
+    'five-star hotel',
+    'spa retreat',
+    'fine dining',
+    'exclusive experiences',
+  ],
+  authors: [{ name: 'Velour & Co.' }],
+  creator: 'Velour & Co.',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://velour.co',
+    siteName: 'Velour & Co.',
+    title: 'Velour & Co. — Luxury Boutique Hotel',
+    description:
+      'Experience unrivalled luxury at Velour & Co. — an intimate boutique hotel where every detail has been curated for the discerning traveller.',
+    images: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80',
+        width: 1200,
+        height: 630,
+        alt: 'Velour & Co. Luxury Hotel',
       },
     ],
-    apple: '/apple-icon.png',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Velour & Co. — Luxury Boutique Hotel',
+    description: 'Experience unrivalled luxury at Velour & Co.',
+    images: ['https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#0a0f1e',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} bg-midnight`}>
+      <body className="antialiased bg-midnight text-ivory font-sans">
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
