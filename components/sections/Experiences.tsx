@@ -36,7 +36,7 @@ const EXPERIENCES = [
     id: 'chef',
     icon: ChefHat,
     category: 'Gastronomy',
-    name: 'Private Chef's Table',
+    name: "Private Chef's Table",
     tagline: 'A dinner conceived entirely for you',
     description:
       'Dine one-on-one with our Executive Chef in the private kitchen. A custom eight-course tasting menu designed around your preferences, served with paired wines from our 3,000-bottle cellar.',

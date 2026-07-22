@@ -31,7 +31,7 @@ const VENUES = [
     name: 'Noir Bar',
     type: 'Signature Cocktail Lounge',
     description:
-      'The heartbeat of Velour & Co. after dark. Noir Bar's master mixologist crafts bespoke cocktails using rare botanicals, smoked spirits, and edible florals.',
+      "The heartbeat of Velour & Co. after dark. Noir Bar's master mixologist crafts bespoke cocktails using rare botanicals, smoked spirits, and edible florals.",
     image: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=900&q=80',
     hours: '5:00 PM – 2:00 AM',
     rating: 5,

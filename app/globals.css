@@ -5,7 +5,7 @@
 
 /* ─── Velour & Co. Design System ─── */
 @theme inline {
-  /* Brand colors */
+  /* Brand colors — these generate bg-*, text-*, border-* Tailwind utilities */
   --color-midnight:       #0a0f1e;
   --color-midnight-2:     #0e1428;
   --color-midnight-3:     #141c35;
@@ -19,6 +19,10 @@
   --color-ivory-muted:    #c4b99a;
   --color-navy-glass:     rgba(10,15,30,0.72);
   --color-navy-glass-2:   rgba(10,15,30,0.88);
+
+  /* Section background aliases used in components */
+  --color-surface:        #141c35;
+  --color-navy:           #0e1428;
 
   /* Semantic tokens */
   --color-background:           var(--color-midnight);
