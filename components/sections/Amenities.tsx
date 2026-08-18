@@ -1,0 +1,120 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import {
+  Utensils, Car, Plane, Wind, Tv, Coffee,
+  Trees, Sun, Mountain, Ban, MapPin, Clock
+} from 'lucide-react'
+
+const AMENITIES = [
+  { icon: Utensils, label: 'On-site Restaurant', desc: 'Nepali and continental dishes served daily' },
+  { icon: Car,      label: 'Free Parking',       desc: 'Complimentary car park on the property' },
+  { icon: Plane,    label: 'Airport Shuttle',    desc: 'Transfers available on request' },
+  { icon: Wind,     label: 'Air Conditioning',   desc: 'Climate control in every room' },
+  { icon: Tv,       label: 'Satellite TV',       desc: 'Flat-screen TV with satellite channels' },
+  { icon: Coffee,   label: 'Tea & Coffee',       desc: 'Electric kettle in the room' },
+  { icon: Trees,    label: 'Garden Area',        desc: 'A quiet outdoor space to unwind' },
+  { icon: Sun,      label: 'Private Balcony',    desc: 'Every room opens onto a balcony' },
+  { icon: Mountain, label: 'Mountain Views',     desc: 'Himalayan views from the rooftop terrace' },
+  { icon: Ban,      label: 'Non-Smoking Rooms',  desc: 'Fresh, smoke-free accommodation' },
+  { icon: MapPin,   label: 'Great Location',     desc: 'About a 6-minute walk to Phewa Lake' },
+  { icon: Clock,    label: 'Helpful Front Desk', desc: 'Check-in from 1:00 PM, check-out by noon' },
+]
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07 } },
+}
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } },
+}
+
+export default function Amenities() {
+  return (
+    <section id="amenities" className="py-28 bg-midnight-2 relative overflow-hidden">
+      {/* Top divider */}
+      <div className="absolute top-0 left-0 right-0 h-px divider-copper opacity-30" aria-hidden="true" />
+
+      {/* Ambient glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(184,115,51,0.04) 0%, transparent 70%)' }}
+        aria-hidden="true"
+      />
+
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
+        >
+          <p className="label-luxury mb-4">What We Offer</p>
+          <h2 className="font-serif text-5xl md:text-6xl font-light text-ivory mb-5">
+            Hotel Amenities
+          </h2>
+          <p className="text-ivory/50 font-sans text-sm max-w-md mx-auto leading-relaxed">
+            Everything you need for a comfortable, easy stay in Pokhara — from an on-site restaurant to free parking and airport transfers.
+          </p>
+          <div className="divider-copper w-16 mx-auto mt-6 opacity-60" />
+        </motion.div>
+
+        {/* Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-px bg-copper/8"
+        >
+          {AMENITIES.map((amenity, i) => (
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              className="group bg-midnight-2 p-6 md:p-8 flex flex-col gap-4 hover:bg-midnight-3
+                         transition-colors duration-300 cursor-default"
+            >
+              <div
+                className="w-11 h-11 flex items-center justify-center border border-copper/25
+                           group-hover:border-copper group-hover:bg-copper/10 transition-all duration-300"
+                style={{ borderRadius: '2px' }}
+              >
+                <amenity.icon
+                  size={18}
+                  className="text-copper/60 group-hover:text-copper transition-colors duration-300"
+                  aria-hidden="true"
+                />
+              </div>
+              <div>
+                <h3 className="font-sans text-sm font-medium text-ivory mb-1.5 group-hover:text-copper transition-colors duration-300">
+                  {amenity.label}
+                </h3>
+                <p className="font-sans text-xs text-ivory/40 leading-relaxed">{amenity.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* CTA strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="mt-12 text-center"
+        >
+          <button
+            onClick={() => document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-8 py-3 border border-copper/40 text-copper font-sans text-xs tracking-widest uppercase
+                       hover:bg-copper hover:text-midnight transition-all duration-300"
+          >
+            Plan Your Stay
+          </button>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
