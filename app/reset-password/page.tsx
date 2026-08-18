@@ -45,7 +45,7 @@ function ResetPasswordForm() {
     setTimeout(() => router.push("/sign-in"), 1800)
   }
 
-  const invalid = !token || tokenError
+  const invalid = !token || Boolean(tokenError)
 
   return (
     <AuthShell
